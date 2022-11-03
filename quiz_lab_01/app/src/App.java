@@ -42,8 +42,9 @@ public class App {
                         inputCriteria = sc.nextLine();
                     }
     
-                    System.out.printf("Input potion's name [starts with 'Buff'] : %s ", inputCriteria);
+                    System.out.printf("Input potion's name [starts with '%s'] : %s ", inputCriteria, inputCriteria);
                     potionName = sc.nextLine();
+                    potionName = inputCriteria + " " + potionName;
     
                     while (ammount == 0) {
                         try {
@@ -63,8 +64,14 @@ public class App {
                     } else if (inputCriteria.matches(criteria3)) {
                         total = ammount * 8000;
                     }
+
+                    if(address.length() >= 10){
+                        total += 50000;
+                    }else{
+                        total += 35000;
+                    }
     
-                    System.out.println("Potion's detail");
+                    System.out.println("\nPotion's detail");
                     System.out.println("================");
                     System.out.printf("\nPotion's name : %s", potionName);
                     System.out.printf("\nPotion's Type : %s", inputCriteria);
