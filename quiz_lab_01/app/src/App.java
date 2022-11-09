@@ -65,11 +65,17 @@ public class App {
                         total = ammount * 8000;
                     }
 
+                    int deliveryFee = 0;
+
                     if(address.length() >= 10){
                         total += 50000;
+                        deliveryFee = 50000;
                     }else{
                         total += 35000;
+                        deliveryFee = 35000;
                     }
+
+
     
                     System.out.println("\nPotion's detail");
                     System.out.println("================");
@@ -78,7 +84,8 @@ public class App {
                     System.out.printf("\nAmount : %d", ammount);
                     System.out.printf("\nAddress : %s", address);
                     System.out.println("\n================");
-                    System.out.printf("Total Price : %d", total);
+                    System.out.printf("Delivery fee: %d\n", deliveryFee);
+                    System.out.printf("Total Price : %d\n", total);
     
                     int money = 0;
     
