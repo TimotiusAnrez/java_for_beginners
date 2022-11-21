@@ -110,3 +110,7 @@ public class App {
         } while (!(menuInput.equals('1')));
     }
 }
+
+/**
+ * To	compete	in	global	market,	BEKRAF believes	that	Indonesia’s	creative	economy	potential	lies	in	the	 small	medium	artisans	that,	on	their	own,	create	and	distribute	their	works.	 At	the	moment	BEKRAF is	in	the	process	of	building	an	ecosystem	to	help	propel	these	artisans	to	the	 world,	however,	the	numbers	of	small	medium	artisans	are	so	huge	that	in	order	to	sell	them	to	the	 world	we	need	to	build	an	overarching	reputation	that	defines	what	Indonesia’s	artisanal	culture	stands	 for.	For	example,	Japan	artisans	are known	for	craftsmanship	(takumi)	in	everything	that	they	do	 including	fashion,	culinary,	entertainment	and	fine	arts.	What	about	Indonesia? We	realize	that	Indonesia	doesn’t	have	a	clear,	let	alone	a	consistent,	reputation	when	it	comes	to	our	 artisans,	so	this	is	an	opportunity	for	you	to	help	us	define	it. 
+ */
