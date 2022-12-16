@@ -124,13 +124,13 @@ public class Crepe {
     @Override
     public String toString() {
         return (
-                "\n\tname\t:" + this.name +
-                "\n\t id\t:" + this.id +
-                "\n\t qty\t:" + this.quantity +
-                "\n\t slice\t:" + this.slices +
-                "\n\t size\t:" + this.size +
-                "\n\t flavor\t:" + this.flavor +
-                "\n\t price\t:" + this.price +
+                "name\t:" + this.name +
+                "\nid\t:" + this.id +
+                "\nqty\t:" + this.quantity +
+                "\nslice\t:" + this.slices +
+                "\nsize\t:" + this.size +
+                "\nflavor\t:" + this.flavor +
+                "\nprice\t:" + this.price +
                 "\n"
             );
     }
