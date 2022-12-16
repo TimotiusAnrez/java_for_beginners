@@ -100,9 +100,9 @@ public class Crepe {
 
     public void setId() {
         String pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        int random = (int) Math.random() * pool.length();
-        int randomNumber = (int) Math.random() * 99;
-        this.id = this.size.charAt(random) + pool.charAt(random) + randomNumber+"";
+        int random = (int) Math.floor(Math.random() * pool.length());
+        int randomNumber = (int) (Math.random() * 99);
+        this.id = String.valueOf(this.size.charAt(0)) + String.valueOf(pool.charAt(random)) + randomNumber;
     }
 
     public void setPrice() {
@@ -123,16 +123,14 @@ public class Crepe {
 
     @Override
     public String toString() {
-        return (
-                "name\t:" + this.name +
+        return ("name\t:" + this.name +
                 "\nid\t:" + this.id +
                 "\nqty\t:" + this.quantity +
                 "\nslice\t:" + this.slices +
                 "\nsize\t:" + this.size +
                 "\nflavor\t:" + this.flavor +
                 "\nprice\t:" + this.price +
-                "\n"
-            );
+                "\n");
     }
 
 }

@@ -40,36 +40,38 @@ public class App {
 
     public void menu2() {
         System.out.println("Crepe List");
-        System.out.println("==================================");
-
         for (int i = 0; i < orderList.size(); i++) {
-            System.out.println("No. " + i+1);
+            System.out.println("=============================");
+            System.out.printf("No. %d\n", i + 1);
             System.out.println(orderList.get(i).toString());
             ;
         }
-        System.out.println("==================================");
+        System.out.println("============================");
     }
 
     public void menu3() {
         String input = "";
         boolean flag = false;
-        while(!flag){
+        String validate = "";
+        while (!flag) {
             menu2();
             System.out.println("select which one do you want to delete?");
             input = sc.nextLine();
-            for(int i = 0; i < orderList.size(); i++){
-                if(input.equals(orderList.get(i).getId())   ){
-                    orderList.remove(i);
-                    flag = true;
+            for (Integer i = 0; i < orderList.size(); i++) {
+                if (input.equals(Integer.toString(i+1))) {
+                    System.out.println("Delete the order? [Y | N] (Case Sensitive)");
+                    validate = sc.nextLine();
+                    if (validate.equals("Y")) {
+                        orderList.remove((int) i);
+                        System.out.println("Successfully deleted!");
+                        flag = true;
+                    } else if (validate.equals("N")) {
+                        flag = true;
+                    }
                 }
             }
         }
-
-        System.out.println("Order deleted...");
-        menu2();
         pressEnter();
-        
-        
     }
 
     public void menu4() {
@@ -78,7 +80,9 @@ public class App {
     }
 
     public void mainMenu() {
-        while (!(this.input.equals("1") || this.input.equals("2") || this.input.equals("3")
+        while (!(this.input.equals("1")
+                || this.input.equals("2")
+                || this.input.equals("3")
                 || this.input.equals("4"))) {
             printMenu();
             this.input = sc.next();
