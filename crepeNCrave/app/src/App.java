@@ -40,36 +40,39 @@ public class App {
 
     public void menu2() {
         System.out.println("Crepe List");
-        System.out.println("==================================");
+        System.out.println("=============================\n");
 
         for (int i = 0; i < orderList.size(); i++) {
             System.out.println("No. " + i+1);
             System.out.println(orderList.get(i).toString());
             ;
         }
-        System.out.println("==================================");
+        System.out.println("\n============================");
     }
 
     public void menu3() {
         String input = "";
         boolean flag = false;
+        String validate = "";
         while(!flag){
             menu2();
             System.out.println("select which one do you want to delete?");
             input = sc.nextLine();
             for(int i = 0; i < orderList.size(); i++){
                 if(input.equals(orderList.get(i).getId())   ){
-                    orderList.remove(i);
-                    flag = true;
+                    System.out.println("Delete the order? [Y | N] (Case Sensitive)");
+                    validate = sc.nextLine();
+                    if(validate.equals("Y")){
+                        orderList.remove(i);
+                        System.out.println("Successfully deleted!");
+                        flag = true;
+                    }else if(validate.equals("N")){
+                        flag = true;
+                    }
                 }
             }
-        }
-
-        System.out.println("Order deleted...");
-        menu2();
-        pressEnter();
-        
-        
+        }  
+        pressEnter();    
     }
 
     public void menu4() {
