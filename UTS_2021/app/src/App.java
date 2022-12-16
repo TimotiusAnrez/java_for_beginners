@@ -39,186 +39,173 @@ public class App {
          * 
          */
 
-        int price1 = 100000;
-        int price2 = 50000;
-        int tmp = 0;
+        Item item1 = new Item(1, "HP Samsung", 10000000);
 
-        System.out.println("price 1 adalah " + price1);
-        System.out.println("price 2 adalah " + price2);
+        User tim = new User(1, "Tim", "TimGanteng");
 
-        tmp = price2;
-        price2 = price1; // price 2 = 100.000
+        Db database = new Db();
 
-        System.out.println("price 1 adalah " + price1);
-        System.out.println("price 2 adalah " + price2);
+        database.addItem(item1);
+        database.registerUser(tim);
 
-        price1 = tmp; // price 1 = 50.000
+        // database.printUserDatabase();
+        database.printItemDatabase();
 
-        System.out.println("price 1 adalah " + price1);
-        System.out.println("price 2 adalah " + price2);
-
-        int[] priceList = { 100000, 110000, 50000, 300000 };
-
-        // for (int i = 0; i < priceList.length; i++) {
-        // for(int j = i + 1; j< priceList.length; j++){
-        // if(priceList[i] > priceList[j]){
-        // tmp = priceList[j];
-        // priceList[j] = priceList[i];
-        // priceList[i] = tmp;
-        // }
-        // }
-        // }
-        // Scanner sc = new Scanner(System.in);
-
-        Item barang1 = new Item(1, "HP", 10000000, 0.1f);
-        Item barang2 = new Item(2, "Stylus", 10000, 0.2f);
-        Item barang3 = new Item(3, "Casing", 5000, 0.15f);
-        Item barang4 = new Item(4, "Charger", 10000, 0.2f);
-        Item temp;
-
-        Item[] listBarang = { barang1, barang2, barang3, barang4 };
-
-        for (int i = 0; i < listBarang.length; i++) {
-            for (int j = i + 1; j < listBarang.length; j++) {
-                if (listBarang[i].getPrice() > listBarang[j].getPrice()) {
-                    temp = listBarang[j];
-                    listBarang[j] = listBarang[i];
-                    listBarang[i] = temp;
+        /**
+         * set variable scanner with scanner object initialization
+         * set variable x with input int initialization
+         * set variable y with input int initialization
+         * set variable z with input int initialization
+         * set variable NilaiTengah
+         * if ((y<x and x<z) or (y>x and x>z))
+         * set NilaiTengah as x
+         * else if((x<y and y<z) or (x>y and y>z))
+         * set NilaiTengah as y
+         * else if((x<z and z<y) or (x>z and z>y))
+         * set NilaiTengah as z
+         * else
+         * set NilaiTengah as NULL
+         * print NilaiTengah
+         * 
+         */
+        int[] arr = { 100, 4, 10, 12, 100, 23, 5, 7 };
+        int tmp;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    tmp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = tmp;
                 }
             }
         }
 
-        for (int i = 0; i < listBarang.length; i++) {
-            System.out.printf("harga barang %s kalau dibeli adalah %.2f\n\n", listBarang[i].getName(), listBarang[i].getTotal());
-        }
-
-        // System.out.println(Arrays.toString(priceList));
-
-        User budi = new User(1, "Budi", "BudiGanteng");
-
-        User.lapar();
-        budi.printString();
-
-        Staff adi = new Staff();
-
-        adi.satu(); //initialize dulu baru bisa dipake method nya
-        Staff.dua(); //static panggil method langsung dari object nya
-
-        /**
-         * import class sanner
-         * 
-         * initialisasi variable sc dengan menggunakan tipe data object scanner
-         * declare variable x dengan menggunakan input integer dari scanner
-         * declare variable y dengan menggunakan input integer dari scanner
-         * declare variable z dengan menggunakan input integer dari scanner
-         * declare variable NilaiTengah;
-         * 
-         * jika((y<x dan x<z) atau (y>x dan x>z))
-         *      maka nilai tengah adalah x
-         * selain itu jika ((x<y dan y<z) atau (x>y dan y>z))
-         *      maka nilai tengah adalah y 
-         * selain itu jika ((x<z dan z<y) atau (x>z dan z>y))
-         *      maka nilai tengah adalah z
-         * selain itu
-         *      tidak ada nilai tengah
-         * 
-         * print nilai tengah
-         */
-        Scanner sc = new Scanner(System.in);
-        // int x,y,z;
-        int x= sc.nextInt();
-        int y = sc.nextInt();
-        int z =sc.nextInt();
-
-        int nilaiTengah;
-
-        if((y<x && x<z) || (y>x && x>z)){
-            nilaiTengah = x; 
-        }else if((x<y && y<z) || (x>y && y>z)){
-            nilaiTengah = y;
-        }else if((x<z && z<y) || (x>z && z>y)){
-            nilaiTengah = z;
-        }else{
-            nilaiTengah = 0;
-        }
-
-        System.out.println(nilaiTengah);
-
+        System.out.println(Arrays.toString(arr));
     }
+}
+
+class Db {
+
+    Vector<User> userDatabase = new Vector<User>();
+    Vector<Item> itemDatabase = new Vector<Item>();
+
+    public void printUserDatabase() {
+        for (int i = 0; i < userDatabase.size(); i++) {
+            userDatabase.elementAt(i).printUser();
+        }
+    }
+
+    public void printItemDatabase() {
+        for (int i = 0; i < itemDatabase.size(); i++) {
+            itemDatabase.elementAt(i).toString();
+        }
+    }
+
+    public void registerUser(User newUser) {
+        userDatabase.add(newUser);
+    }
+
+    public void addItem(Item item) {
+        itemDatabase.add(item);
+    }
+
 }
 
 class Item {
     int id;
     String name;
     int price;
-    float promo;
-    int ongkir = 15000;
-    float totalHarga;
+    float discount;
+    int delivery;
+    float total;
 
-    // cara masukan data
-    Item(int id, String name, int price, float promo) {
+    Item(int id, String name, int price) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.promo = promo;
     }
 
-    String getName() {
-        return this.name;
+    public int getId() {
+        return id;
     }
 
-    int getPrice() {
-        return this.price;
+    public String getName() {
+        return name;
     }
 
-    float getTotal() {
-        return price - (price * promo) + ongkir;
+    public int getPrice() {
+        return price;
     }
 
-    float getPromo(){
-        return this.price * this.promo;
+    public float getDiscount() {
+        return discount;
     }
 
-    public void printString() {
-        System.out.printf("id:%d\nname:%s\nprice:%d\npromo:%.2f\n", this.id, this.name, this.price, this.promo);
+    public int getDelivery() {
+        return delivery;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    // set discount and delivery first
+    public void setTotal() {
+        this.total = this.price - this.discount + delivery;
+    }
+
+    public void setDiscount(float discount) {
+        this.discount = discount * this.price;
+    }
+
+    public void setDelivery(int delivery) {
+        this.delivery = delivery;
+    }
+
+    @Override
+    public String toString() {
+        return "{\n\tid: " + this.id + "\n\t" + "name: " + this.name + "\n\t" + "price: " + this.price + "\n\t"
+                + "discount: "
+                + this.discount + "\n\t" + "delivery: " + this.delivery + "\n\t" + "total: " + this.total + "\n}";
     }
 }
 
 class User {
     int id;
-    String name;
+    String userName;
     String password;
-    Vector<Item> cart = new Vector<Item>(); // [0,0,0,0,0,0,0]
+    Vector<Item> cart = new Vector<Item>();
 
-
-    // constructor adalah cara untuk memasukan data disaat object dipakai pertama
-    // kali
-    User(int id, String name, String password) {
+    User(int id, String userName, String password) {
         this.id = id;
-        this.name = name;
+        this.userName = userName;
         this.password = password;
     }
 
-    public void addItem(Item item){
+    public void addItem(Item item) {
         cart.add(item);
     }
 
-    static void lapar(){
-        System.out.println("Aku lapar");
+    public void printUser() {
+        System.out.printf("id: %d\nuserName: %s\n", this.id, this.userName);
+        if (cart.size() == 0) {
+            System.out.println("[]");
+        } else {
+            System.out.println("[");
+            for (int i = 0; i < cart.size(); i++) {
+                System.out.println("   " + cart.elementAt(i).toString());
+                ;
+            }
+            System.out.println("]");
+        }
     }
 
-    // cara atau program yang berguna untuk melakukan sesuatu
-    public void printString() {
-        System.out.printf("id:%d\nname:%s\npassword:%s\n", this.id, this.name, this.password);
-    }
-}
-
-class Staff{
-    void satu(){
-        System.out.println("satu");
-    }
-
-    static void dua(){
-        System.out.println("dua");
-    }
 }
