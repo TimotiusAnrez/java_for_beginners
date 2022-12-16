@@ -102,7 +102,7 @@ public class Crepe {
         String pool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         int random = (int) Math.random() * pool.length();
         int randomNumber = (int) Math.random() * 99;
-        this.id = this.size.charAt(0) + pool.charAt(random) + randomNumber + " ";
+        this.id = this.size.charAt(random) + pool.charAt(random) + randomNumber+"";
     }
 
     public void setPrice() {

@@ -4,7 +4,7 @@ import Crepe.Crepe;
 
 public class App {
     Scanner sc = new Scanner(System.in);
-    ArrayList orderList = new ArrayList<Crepe>();
+    ArrayList<Crepe> orderList = new ArrayList<Crepe>();
     String input = "";
 
     // print menu
@@ -36,22 +36,40 @@ public class App {
         orderList.add(orderCrepe);
         System.out.println("Successfully ordered!");
         pressEnter();
-    }   
+    }
 
     public void menu2() {
         System.out.println("Crepe List");
         System.out.println("==================================");
 
         for (int i = 0; i < orderList.size(); i++) {
-            System.out.println("No. " + i);
-            System.out.println(orderList.get(i).toString());;
+            System.out.println("No. " + i+1);
+            System.out.println(orderList.get(i).toString());
+            ;
         }
         System.out.println("==================================");
-        pressEnter();
     }
 
     public void menu3() {
-        System.out.println("menu 3");
+        String input = "";
+        boolean flag = false;
+        while(!flag){
+            menu2();
+            System.out.println("select which one do you want to delete?");
+            input = sc.nextLine();
+            for(int i = 0; i < orderList.size(); i++){
+                if(input.equals(orderList.get(i).getId())   ){
+                    orderList.remove(i);
+                    flag = true;
+                }
+            }
+        }
+
+        System.out.println("Order deleted...");
+        menu2();
+        pressEnter();
+        
+        
     }
 
     public void menu4() {
@@ -67,33 +85,38 @@ public class App {
         }
     }
 
+    public void reset() {
+        this.input = "";
+        start();
+    }
+
     public void start() {
         mainMenu();
 
         switch (input) {
             case "1":
                 menu1();
-                this.input = "";
-                start();
+                reset();
                 break;
             case "2":
                 if (orderList.size() == 0) {
                     System.out.println("There is no order!");
                     pressEnter();
-                    this.input = "";
-                    start();
+                    reset();
                 } else {
                     menu2();
+                    pressEnter();
+                    reset();
                 }
                 break;
             case "3":
-                if(orderList.size() == 0){
+                if (orderList.size() == 0) {
                     System.out.println("There is no order!");
                     pressEnter();
-                    this.input = "";
-                    start();
-                }else{
+                    reset();
+                } else {
                     menu3();
+                    reset();
                 }
                 break;
             case "4":
