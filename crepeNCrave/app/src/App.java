@@ -87,7 +87,14 @@ public class App {
                 }
                 break;
             case "3":
-                menu3();
+                if(orderList.size() == 0){
+                    System.out.println("There is no order!");
+                    pressEnter();
+                    this.input = "";
+                    start();
+                }else{
+                    menu3();
+                }
                 break;
             case "4":
                 menu4();
