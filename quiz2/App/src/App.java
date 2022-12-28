@@ -50,7 +50,22 @@ public class App {
             System.out.println(element.toString());
             ;
         });
+
+        System.out.println("Press enter to continue");
+        sc.nextLine();
+        sc.nextLine();
+        reset();
     }
+
+    /**
+     * <access modifier> <return type> <method name>(parameter list){
+     *      method body
+     * }
+     * 
+     * 
+     */
+
+   
 
     public void mainMenu() {
         while (!(input > 0)) {
@@ -83,5 +98,6 @@ public class App {
 
     public static void main(String[] args) throws Exception {
         new App().mainMenu();
+        
     }
 }
