@@ -8,7 +8,7 @@ public class App {
     Scanner sc = new Scanner(System.in);
     ArrayList orderList = new ArrayList<Food>();
     int input = 0;
-    
+
     public void menu1() {
         Food newOrder = new Food();
 
@@ -16,27 +16,44 @@ public class App {
         newOrder.setName();
         newOrder.setCalories();
         newOrder.setPrice();
-        
+
         orderList.add(newOrder);
     }
 
     public void menu2() {
-        for(int i = 0; i < orderList.size(); i++){
-            System.out.println("No\t: "+i);
+        for (int i = 0; i < orderList.size(); i++) {
+            System.out.println("No\t: " + i);
             System.out.println("==================");
             System.out.println(orderList.get(i).toString());
         }
     }
 
     public void menu3() {
+        String input = "";
+        while(!(input.length() >= 3 && input.length() <= 20)){
+            System.out.println("Input food's name[3-20] : ");
+            input = sc.next();
+        }
 
+        for(int i = 0; i < orderList.size(); i++){
+            System.out.println(orderList.get(i).getClass().getName());
+            System.out.println(input);
+            if(orderList.get(i).getClass().){
+                System.out.println("No\t: "+ i);
+                System.out.println("=============");
+                orderList.get(i).toString();
+                reset();
+            }
+        }
+        System.out.println("No data found!");
+        reset();
     }
 
     public void menu4() {
 
     }
-    
-    public void reset(){
+
+    public void reset() {
         this.input = 0;
         printMenu();
     }
@@ -60,7 +77,13 @@ public class App {
                 reset();
                 break;
             case 2:
-                menu2();
+                if (orderList.size() == 0) {
+                    System.out.println("No data!");
+                    reset();
+                } else {
+                    menu2();
+                    reset();
+                }
                 break;
             case 3:
                 menu3();
