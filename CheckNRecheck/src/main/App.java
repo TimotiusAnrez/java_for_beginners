@@ -2,8 +2,6 @@ package main;
 
 import java.util.*;
 
-import javax.lang.model.element.Element;
-
 public class App {
 
 	Scanner sc = new Scanner(System.in);
